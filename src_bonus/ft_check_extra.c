@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 00:16:01 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/23 05:00:51 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:16:05 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_check_extra(char **str)
 		while (str[i][j])
 		{
 			if (str[i][j] != '1' && str[i][j] != '0' && str[i][j] != 'E'
-				&& str[i][j] != 'C' && str[i][j] != 'P')
+				&& str[i][j] != 'C' && str[i][j] != 'P' && str[i][j] != 'M')
 			{
 				write(1, "!!ERROR!!\nthe map has contain extra characters", 46);
 				exit (1);

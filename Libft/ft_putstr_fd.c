@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilasrarf <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:02:42 by ilasrarf          #+#    #+#             */
-/*   Updated: 2022/11/03 15:04:24 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/21 19:58:38 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,3 @@ void	ft_putstr_fd(char const *s, int fd)
 	while (s && s[0])
 		write(fd, s++, 1);
 }
-

@@ -6,14 +6,14 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 00:52:58 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/15 11:31:32 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:53:14 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef SO_LONG_H
+#ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx_linux/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -21,28 +21,44 @@
 # include "Libft/libft.h"
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 100
+#  define BUFFER_SIZE 100
 # endif
+
+typedef struct pars{
+	int	j;
+	int	i;
+	int	one;
+	int	zero;
+	int	c;
+	int	e;
+	int	p;
+	int	sum;
+}	t_pars;
 
 typedef struct mlx_win{
 	char	**map;
+	char	root;
 	void	*ptr;
 	void	*win;
 	void	*img_wall;
 	void	*img_coin;
 	void	*img_door;
-	void	*img_ply;
+	void	*img_plyl;
+	void	*img_plyr;
 	void	*img_flor;
+	void	*img_exit_o;
+	void	*img_exit_c;
+	void	*img_enemy;
 	int		move_cnt;
 	int		coin_cnt;
 	int		coin_eat;
-	void	*img_exit_o;
-	void	*img_exit_c;
 	int		c_exit;
 	int		o_exit;
 	int		h_img;
 	int		w_img;
-} x_mlx;
+	int		h_win;
+	int		w_win;
+}	t_mlx;
 
 //------------- pasrsing part -------------//
 
@@ -53,36 +69,43 @@ int		ft_open_file(char *str);//to open the file
 int		ft_check_walls_len(char **str);//check if map lines is the same
 int		ft_no_escape_map(char **str);// check if the map is closed by '1' 
 int		ft_error_check_map_file(char *str);
-int		ft_check_characters(char **str);
+int		ft_check_characters(char **str, t_pars *pars);
 int		ft_check_rec(char **str);//***
-char	**ft_error(char *av);//to run all parsing function 
-int		ft_map_file(char *str);// to run the open file funtion and check extantion
-int		ft_cnt_char(char **str);
+char	**ft_error(char *av, t_pars *pars);//to run all parsing function 
+int		ft_map_file(char *str);//run the open file funtion and check extantion
+void	ft_cnt_char(char **str, t_pars *pars);
+int		ft_cnt_char_err(t_pars *pars);
 void	ft_err_read(char *str);
 int		ft_check_extra(char **str);
 int		ft_pos(char **str, int *y, int *x);//get plyaer position
 int		ft_check_ply_path(char **str);//check if player have a valid path
-int		ft_cnt_h(char **map); // count lines in the map 
+int		ft_cnt_h(char **map); // count lines in the map
+void	ft_free(char **str);
 
 //------------- pasrsing part end -------------//
 
 //------------- drawing part -------------//
 
-int		ft_put_img(x_mlx *t_win);// to put the xpm file into void * --> for control (image)
+//put the xpm file into void * -> for control (image)
+int		ft_put_img(t_mlx *t_win);
 
-int		ft_key_check(int key, x_mlx *t_win);//to check the keys
+int		ft_key_check(int key, t_mlx *t_win);//to check the keys
 
-int		ft_draw(x_mlx *t_win);
-int		ft_draw_p_c(x_mlx *t_win);
-int		ft_draw_w_f(x_mlx *t_win);
-int		ft_draw_ext(x_mlx *t_win);
+int		ft_cnt_coin(t_mlx *t_win);//cont coin in the fucking map
 
-int		ft_move_down(x_mlx *t_win);
-int		ft_move_right(x_mlx *t_win);
-int		ft_move_left(x_mlx *t_win);
-int		ft_move_up(x_mlx *t_win);
+int		ft_draw(t_mlx *t_win, char root);
+int		ft_draw_p_c(t_mlx *t_win, int root);
+int		ft_draw_w_f(t_mlx *t_win);
+int		ft_draw_ext(t_mlx *t_win);
 
-void	ft_move_write(x_mlx *t_win);
+int		ft_move_down(t_mlx *t_win);
+int		ft_move_right(t_mlx *t_win);
+int		ft_move_left(t_mlx *t_win);
+int		ft_move_up(t_mlx *t_win);
+
+int		ft_write_moves(t_mlx *t_win);//wirte the number of moves in command line
+
+int		ft_destroy(t_mlx *t_win); // destroy images and window
 
 //------------- drawing part  end -------------//
-# endif
+#endif

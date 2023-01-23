@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:04:38 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/23 20:18:21 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:22:07 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ int	ft_put_img(t_mlx *t_win)
 			&t_win->w_img, &t_win->h_img);
 	t_win->img_exit_o = mlx_xpm_file_to_image(t_win->ptr, "./assets/o_exit.xpm",
 			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy.xpm",
+			&t_win->w_img, &t_win->h_img);
 	if(!t_win->img_wall || !t_win->img_flor || !t_win->img_coin || !t_win->img_plyr 
-			|| !t_win->img_plyl || !t_win->img_exit_c || !t_win->img_exit_o)
+			|| !t_win->img_plyl || !t_win->img_exit_c || !t_win->img_exit_o
+			|| !t_win->img_enemy)
 	{
 		write(1,"!!ERROR!!\n", 10);
 		exit(1);
@@ -58,6 +61,9 @@ int	ft_draw_w_f(t_mlx *t_win)
 			if (t_win->map[i][j] == '1')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
 					t_win->img_wall, width_pos, height_pos);
+			else if (t_win->map[i][j] == 'M')
+				mlx_put_image_to_window(t_win->ptr, t_win->win,
+					t_win->img_enemy, width_pos, height_pos);
 			width_pos += 64;
 			j++;
 		}

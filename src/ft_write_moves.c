@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/15 08:33:55 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/15 10:40:15 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/01/23 16:49:33 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/01/23 16:54:47 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "../Libft/libft.h"
 
-void    ft_move_write(x_mlx *t_win)
+int ft_write_moves(t_mlx *t_win)
 {
-    t_win->move_cnt++;
-    write(1, "the number of moves :", 21);
-    ft_putnbr_fd(t_win->move_cnt, 1);
-    write(1, "\n", 1);
+	write(1, "move :", 6);
+	ft_putnbr_fd(t_win->move_cnt, 1);
+	write(1, "\n", 1);
+	return (0);
 }
