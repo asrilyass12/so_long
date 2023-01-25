@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 09:05:22 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/23 05:14:43 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:36:22 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 #include "../Libft/libft.h"
 
 int	ft_move_up(t_mlx *t_win)

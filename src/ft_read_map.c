@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:19:04 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/21 19:57:26 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:36:33 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 #include "../Libft/libft.h"
 
 void	ft_err_read(char *str)

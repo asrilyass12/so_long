@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 03:12:27 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/22 19:43:37 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:36:15 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 #include "../Libft/libft.h"
 
 int	ft_destroy(t_mlx *t_win)

@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 00:16:01 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/21 19:16:05 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:53:26 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 #include "../Libft/libft.h"
 
 int	ft_check_characters(char **str, t_pars *pars)

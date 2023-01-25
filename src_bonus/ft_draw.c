@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:04:38 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/23 20:22:07 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 05:40:21 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 #include "../Libft/libft.h"
 
 int	ft_put_img(t_mlx *t_win)
@@ -29,11 +29,8 @@ int	ft_put_img(t_mlx *t_win)
 			&t_win->w_img, &t_win->h_img);
 	t_win->img_exit_o = mlx_xpm_file_to_image(t_win->ptr, "./assets/o_exit.xpm",
 			&t_win->w_img, &t_win->h_img);
-	t_win->img_enemy = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy.xpm",
-			&t_win->w_img, &t_win->h_img);
 	if(!t_win->img_wall || !t_win->img_flor || !t_win->img_coin || !t_win->img_plyr 
-			|| !t_win->img_plyl || !t_win->img_exit_c || !t_win->img_exit_o
-			|| !t_win->img_enemy)
+			|| !t_win->img_plyl || !t_win->img_exit_c || !t_win->img_exit_o)
 	{
 		write(1,"!!ERROR!!\n", 10);
 		exit(1);
@@ -41,7 +38,30 @@ int	ft_put_img(t_mlx *t_win)
 	return (0);
 }
 
-int	ft_draw_w_f(t_mlx *t_win)
+int	ft_put_img_enemy(t_mlx *t_win)
+{
+	t_win->img_enemy1 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy1.xpm",
+			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy2 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy2.xpm",
+			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy3 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy3.xpm",
+			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy4 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy4.xpm",
+			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy5 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy5.xpm",
+			&t_win->w_img, &t_win->h_img);
+	t_win->img_enemy6 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy6.xpm",
+			&t_win->w_img, &t_win->h_img);
+	if(!t_win->img_enemy1 || !t_win->img_enemy2 || !t_win->img_enemy3 || !t_win->img_enemy4
+			|| !t_win->img_enemy5 || !t_win->img_enemy6)
+	{
+		write(1,"!!ERROR!!\n", 10);
+		exit(1);
+	}
+	return (0);
+}
+
+int	ft_draw_w_f(t_mlx *t_win, void *img)
 {
 	int	width_pos;
 	int	height_pos;
@@ -63,7 +83,7 @@ int	ft_draw_w_f(t_mlx *t_win)
 					t_win->img_wall, width_pos, height_pos);
 			else if (t_win->map[i][j] == 'M')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					t_win->img_enemy, width_pos, height_pos);
+					img, width_pos, height_pos);
 			width_pos += 64;
 			j++;
 		}

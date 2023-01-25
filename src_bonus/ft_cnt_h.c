@@ -6,11 +6,11 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:48:28 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/21 19:27:22 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/24 03:53:51 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long_bonus.h"
 #include "../Libft/libft.h"
 
 int	ft_cnt_h(char	**map)

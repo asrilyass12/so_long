@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 00:52:58 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/23 16:53:14 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:12:02 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "Libft/libft.h"
+# include "../Libft/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
@@ -48,7 +48,12 @@ typedef struct mlx_win{
 	void	*img_flor;
 	void	*img_exit_o;
 	void	*img_exit_c;
-	void	*img_enemy;
+	void	*img_enemy1;
+	void	*img_enemy2;
+	void	*img_enemy3;
+	void	*img_enemy4;
+	void	*img_enemy5;
+	void	*img_enemy6;
 	int		move_cnt;
 	int		coin_cnt;
 	int		coin_eat;
@@ -88,6 +93,7 @@ void	ft_free(char **str);
 
 //put the xpm file into void * -> for control (image)
 int		ft_put_img(t_mlx *t_win);
+int		ft_put_img_enemy(t_mlx *t_win);
 
 int		ft_key_check(int key, t_mlx *t_win);//to check the keys
 
@@ -107,5 +113,7 @@ int		ft_write_moves(t_mlx *t_win);//wirte the number of moves in command line
 
 int		ft_destroy(t_mlx *t_win); // destroy images and window
 
+//---------------- BONUS PART -----------------//
+int		ft_animation(t_mlx *t_win);
 //------------- drawing part  end -------------//
 #endif

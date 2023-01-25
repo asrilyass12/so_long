@@ -1,22 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_moves.c                                   :+:      :+:    :+:   */
+/*   ft_move_enemy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 16:49:33 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 03:36:36 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/01/25 08:10:46 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/01/25 08:21:13 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include "../Libft/libft.h"
 
-int ft_write_moves(t_mlx *t_win)
+int ft_cnt_enemy(t_mlx *t_win)
 {
-	write(1, "move :", 6);
-	ft_putnbr_fd(t_win->move_cnt, 1);
-	write(1, "\n", 1);
-	return (0);
+	int	i;
+	int	j;
+	
+	t_win->enemy_cnt = 0;
+	i = 0;
+	while(t_win->map[i])
+	{
+		j = 0;
+		while (t_win->map[i][j])
+		{
+			if(t_win->map[i][j] == 'M')
+				t_win->enemy_cnt++;
+			j++;
+		}
+		i++;
+	}
+}
+
+int	get_enemey_pos(t_mlx *t_win)
+{
+	
+}
+
+int	ft_move_enemy(t_mlx *t_win)
+{
+	
 }
