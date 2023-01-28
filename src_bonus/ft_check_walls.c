@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:18:41 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 03:53:41 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:26:55 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,41 +51,47 @@ int	ft_check_rec(char **str)
 	return (1);
 }	
 
-int	ft_no_escape_map(char **str)
+void	ft_chack_wall_p1(char c1)
+{
+	if (c1 != '1')
+	{
+		write(1, "!!ERROR!!\nthe map most be close", 31);
+		exit (1);
+	}
+}
+
+void	ft_chack_wall_p2(char c1, char c2)
+{
+	if (c1 != '1' || c2 != '1')
+	{
+		write(1, "!!ERROR!!\nthe map most be close", 31);
+		exit (1);
+	}
+}
+
+void	ft_no_escape_map(char **str)
 {
 	int	i;
 	int	j;
 	int	len;
+	int	h;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
+	h = 0;
 	ft_check_walls_len(str);
-	ft_check_rec(str);
+	while (str[h])
+		h++;
 	len = ft_strlen(str[0]) - 1;
-	while (str[i])
+	while (str[++i])
 	{
-		if (i == 0)
+		if (i == 0 || i == h - 1)
 		{
 			j = 0;
-			while (str[i][j])
-			{
-				if (str[i][j] != '1')
-				{
-					write(1, "!!ERROR!!\nthe map most be close", 31);
-					exit (1);
-				}
-				j++;
-			}			
+			while (str[i][++j])
+				ft_chack_wall_p1(str[i][j]);
 		}
 		else
-		{
-			if (str[i][0] != '1' || str[i][len] != '1')
-			{
-				write(1, "!!ERROR!!\nthe map most be close", 31);
-				exit (1);
-			}
-		}
-		i++;
+			ft_chack_wall_p2(str[i][0], str[i][len]);
 	}
-	return (1);
 }

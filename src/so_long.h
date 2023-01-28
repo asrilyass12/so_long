@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 00:52:58 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/25 00:12:02 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:41:08 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct mlx_win{
 	int		w_img;
 	int		h_win;
 	int		w_win;
+	int		width_pos;
+	int		height_pos;
 }	t_mlx;
 
 //------------- pasrsing part -------------//
@@ -72,7 +74,7 @@ char	**so_long(int map);// the main function
 int		ft_check_ex(char *haystack);//check if the extantion is valid
 int		ft_open_file(char *str);//to open the file
 int		ft_check_walls_len(char **str);//check if map lines is the same
-int		ft_no_escape_map(char **str);// check if the map is closed by '1' 
+void	ft_no_escape_map(char **str);// check if the map is closed by '1' 
 int		ft_error_check_map_file(char *str);
 int		ft_check_characters(char **str, t_pars *pars);
 int		ft_check_rec(char **str);//***
@@ -100,9 +102,9 @@ int		ft_key_check(int key, t_mlx *t_win);//to check the keys
 int		ft_cnt_coin(t_mlx *t_win);//cont coin in the fucking map
 
 int		ft_draw(t_mlx *t_win, char root);
-int		ft_draw_p_c(t_mlx *t_win, int root);
-int		ft_draw_w_f(t_mlx *t_win);
-int		ft_draw_ext(t_mlx *t_win);
+void	ft_draw_p_c(t_mlx *t_win, int root);
+void	ft_draw_w_f(t_mlx *t_win);
+void	ft_draw_ext(t_mlx *t_win);
 
 int		ft_move_down(t_mlx *t_win);
 int		ft_move_right(t_mlx *t_win);

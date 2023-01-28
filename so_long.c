@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:05:40 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 03:32:36 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:39:05 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_draw(t_mlx *t_win, char root)
 	ft_draw_w_f(t_win);
 	ft_draw_p_c(t_win, root);
 	ft_draw_ext(t_win);
-	ft_write_moves(t_win);
 	if (t_win->coin_cnt != t_win->coin_eat)
 	{
 		mlx_string_put(t_win->ptr, t_win->win, 5, 5, 0xFFFFFF, "hey boy \

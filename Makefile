@@ -6,7 +6,7 @@
 #    By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 04:05:00 by ilasrarf          #+#    #+#              #
-#    Updated: 2023/01/25 08:10:41 by ilasrarf         ###   ########.fr        #
+#    Updated: 2023/01/28 09:03:44 by ilasrarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ FILES_O = so_long.o src/ft_read_map.o src/ft_check_valid_map_ex.o src/ft_open_fi
 			
 FILES_B = so_long_bonus.c src_bonus/ft_read_map.c src_bonus/ft_check_valid_map_ex.c src_bonus/ft_open_file.c src_bonus/ft_check_walls.c src_bonus/ft_check_cnt_char.c \
 			src_bonus/ft_check_extra.c src_bonus/ft_cnt_h.c src_bonus/ft_ply_path.c src_bonus/ft_draw.c src_bonus/ft_move.c src_bonus/ft_count_coin.c\
-			src_bonus/free.c src_bonus/ft_destroy.c src_bonus/ft_move_enemy.c
+			src_bonus/free.c src_bonus/ft_destroy.c src_bonus/ft_move_enemy.c src_bonus/ft_animation.c src_bonus/ft_mess.c src_bonus/ft_check_key_part2.c
 
 FILES_B_O = so_long_bonus.o src_bonus/ft_read_map.o src_bonus/ft_check_valid_map_ex.o src_bonus/ft_open_file.o src_bonus/ft_check_walls.o src_bonus/ft_check_cnt_char.o \
 			src_bonus/ft_check_extra.o src_bonus/ft_cnt_h.o src_bonus/ft_ply_path.o src_bonus/ft_draw.o src_bonus/ft_move.o src_bonus/ft_count_coin.o\
-			src_bonus/free.o src_bonus/ft_destroy.o src_bonus/ft_move_enemy.o
+			src_bonus/free.o src_bonus/ft_destroy.o src_bonus/ft_move_enemy.o src_bonus/ft_animation.o src_bonus/ft_mess.o src_bonus/ft_check_key_part2.o
 			
 NAME = so_long
 NAME_B = so_long_bonus
@@ -37,7 +37,7 @@ RM = rm -f
 
 all: ${LIBFT} ${FILES_O} ${NAME}
 
-%.o: %.c
+%.o: %.c so_long.hpp
 	$(CC) -Wall -Wextra -Werror  -c $< -o $@
 
 ${LIBFT}:

@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:04:38 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 05:40:21 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:37:53 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int	ft_put_img(t_mlx *t_win)
 			&t_win->w_img, &t_win->h_img);
 	t_win->img_exit_o = mlx_xpm_file_to_image(t_win->ptr, "./assets/o_exit.xpm",
 			&t_win->w_img, &t_win->h_img);
-	if(!t_win->img_wall || !t_win->img_flor || !t_win->img_coin || !t_win->img_plyr 
-			|| !t_win->img_plyl || !t_win->img_exit_c || !t_win->img_exit_o)
+	if (!t_win->img_wall || !t_win->img_flor || !t_win->img_coin
+		|| !t_win->img_plyr || !t_win->img_plyl || !t_win->img_exit_c
+		|| !t_win->img_exit_o)
 	{
-		write(1,"!!ERROR!!\n", 10);
+		write(1, "!!ERROR!!\n", 10);
+		ft_destroy(t_win);
 		exit(1);
 	}
 	return (0);
@@ -52,111 +54,99 @@ int	ft_put_img_enemy(t_mlx *t_win)
 			&t_win->w_img, &t_win->h_img);
 	t_win->img_enemy6 = mlx_xpm_file_to_image(t_win->ptr, "./assets/enemy6.xpm",
 			&t_win->w_img, &t_win->h_img);
-	if(!t_win->img_enemy1 || !t_win->img_enemy2 || !t_win->img_enemy3 || !t_win->img_enemy4
-			|| !t_win->img_enemy5 || !t_win->img_enemy6)
+	if (!t_win->img_enemy1 || !t_win->img_enemy2 || !t_win->img_enemy3
+		|| !t_win->img_enemy4 || !t_win->img_enemy5 || !t_win->img_enemy6)
 	{
-		write(1,"!!ERROR!!\n", 10);
+		write(1, "!!ERROR!!\n", 10);
+		ft_destroy(t_win);
 		exit(1);
 	}
 	return (0);
 }
 
-int	ft_draw_w_f(t_mlx *t_win, void *img)
+void	ft_draw_w_f(t_mlx *t_win, void *img)
 {
-	int	width_pos;
-	int	height_pos;
 	int	i;
 	int	j;
 
 	i = 0;
-	height_pos = 32;
+	t_win->height_pos = 32;
 	while (t_win->map[i])
 	{
 		j = 0;
-		width_pos = 0;
+		t_win->width_pos = 0;
 		while (t_win->map[i][j])
 		{
 			mlx_put_image_to_window(t_win->ptr, t_win->win,
-				t_win->img_flor, width_pos, height_pos);
+				t_win->img_flor, t_win->width_pos, t_win->height_pos);
 			if (t_win->map[i][j] == '1')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					t_win->img_wall, width_pos, height_pos);
+					t_win->img_wall, t_win->width_pos, t_win->height_pos);
 			else if (t_win->map[i][j] == 'M')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					img, width_pos, height_pos);
-			width_pos += 64;
+					img, t_win->width_pos, t_win->height_pos);
+			t_win->width_pos += 64;
 			j++;
 		}
-		height_pos += 64;
+		t_win->height_pos += 64;
 		i++;
 	}
-	return (0);
 }
 
-int	ft_draw_p_c(t_mlx *t_win, int root)
+void	ft_draw_p_c(t_mlx *t_win, int root)
 {
-	int	width_pos;
-	int	height_pos;
 	int	j;
 	int	i;
 
-	j = 0;
-	i = 0;
-	height_pos = 32;
-	while (t_win->map[i])
+	i = -1;
+	t_win->height_pos = 32;
+	while (t_win->map[++i])
 	{
 		j = 0;
-		width_pos = 0;
+		t_win->width_pos = 0;
 		while (t_win->map[i][j])
 		{
 			if (t_win->map[i][j] == 'P' && root == 'l')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					t_win->img_plyl, width_pos, height_pos);
+					t_win->img_plyl, t_win->width_pos, t_win->height_pos);
 			if (t_win->map[i][j] == 'P' && root == 'r')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					t_win->img_plyr, width_pos, height_pos);
+					t_win->img_plyr, t_win->width_pos, t_win->height_pos);
 			if (t_win->map[i][j] == 'C')
 				mlx_put_image_to_window(t_win->ptr, t_win->win,
-					t_win->img_coin, width_pos, height_pos);
-			width_pos += 64;
+					t_win->img_coin, t_win->width_pos, t_win->height_pos);
+			t_win->width_pos += 64;
 			j++;
 		}
-		height_pos += 64;
-		i++;
+		t_win->height_pos += 64;
 	}
-	return (0);
 }
 
-int	ft_draw_ext(t_mlx *t_win)
+void	ft_draw_ext(t_mlx *t_win)
 {
-	int	width_pos;
-	int	height_pos;
 	int	j;
 	int	i;
 
-	j = 0;
-	i = 0;
-	height_pos = 32;
-	while (t_win->map[i])
+	i = -1;
+	t_win->height_pos = 32;
+	while (t_win->map[++i])
 	{
 		j = 0;
-		width_pos = 0;
+		t_win->width_pos = 0;
 		while (t_win->map[i][j])
 		{
 			if (t_win->map[i][j] == 'E')
 			{
 				if (t_win->coin_cnt == t_win->coin_eat)
 					mlx_put_image_to_window(t_win->ptr, t_win->win,
-						t_win->img_exit_o, width_pos, height_pos);
+						t_win->img_exit_o, t_win->width_pos, t_win->height_pos);
 				else
 					mlx_put_image_to_window(t_win->ptr, t_win->win,
-						t_win->img_exit_c, width_pos, height_pos);
+						t_win->img_exit_c, t_win->width_pos, t_win->height_pos);
 			}
-			width_pos += 64;
+			t_win->width_pos += 64;
 			j++;
 		}
-		height_pos += 64;
-		i++;
+		t_win->height_pos += 64;
 	}
-	return (0);
 }
