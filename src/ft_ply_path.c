@@ -5,107 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 10:10:35 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 03:36:29 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/01/29 11:43:40 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/01/29 15:18:39 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "../Libft/libft.h"
 
+void	ft_exit(void)
+{
+	write(1, "!!ERROR!!\nTHE MAP NOT VALID", 27);
+	exit(0);
+}
 
-int		ft_pos(char **str, int *y, int *x)
+int	ft_check_zero(char **map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i])
+	while (map[i])
 	{
 		j = 0;
-		while (str[i][j])
+		while (map[i][j])
 		{
-			if (str[i][j] == 'P')
-			{
-				*y = i;
-				*x = j;
+			if ((map[i][j] == '0' || map[i][j] == 'C' ) && (map[i][j - 1] == 'P'
+				|| map[i][j + 1] == 'P' || map[i + 1][j] == 'P'
+				|| map[i - 1][j] == 'P'))
 				return (1);
-			}
 			j++;
-	
 		}
 		i++;
 	}
 	return (0);
 }
 
-// int	ft_check_other_op()
-// {
-
-// }
-
-int		ft_check_ply_path(char **str)
+void	ft_final_check(char **map)
 {
-	int	x;
-	int	y;
-	int g;
-	
-	x = 0;
-	y = 0;
-	ft_pos(str, &x, &y);
-	if (str[x][y + 1] == '0')
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
 	{
-		// ft_check_other_op();
-		str[x][y] = 'Z';
-		str[x][y + 1] = 'P';
-		g = 0;
-		while (str[g] != NULL)
+		j = 0;
+		while (map[i][j])
 		{
-			// printf("%s\n", str[g]);
-			g++;
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+			{
+				if ((map[i][j] == 'E') && (map[i][j - 1] != 'P'
+				&& map[i][j + 1] != 'P' && map[i + 1][j] != 'P'
+				&& map[i - 1][j] != 'P'))
+					ft_exit();
+				else if (map[i][j] == 'C')
+					ft_exit();
+			}
+			j++;
 		}
-		// printf("%d == %d", x,y);
-		ft_check_ply_path(str);
+		i++;
 	}
-	else if (str[x][y - 1] == '0')
+}
+
+void	ft_fill(char **str)
+{
+	int		i;
+	int		j;
+	char	**m;
+
+	m = ft_alloc(str);
+	i = 0;
+	while (ft_check_zero(m))
 	{
-		str[x][y] = 'Z';
-		str[x][y - 1] = 'P';
-		g = 0;
-		while (str[g] != NULL)
+		i = 0;
+		j = 0;
+		while (m[i])
 		{
-			// printf("%s\n", str[g]);
-			g++;
+			j = 0;
+			while (m[i][j])
+			{
+				if ((m[i][j] == '0' || m[i][j] == 'C') && (m[i][j - 1] == 'P'
+					|| m[i][j + 1] == 'P' || m[i + 1][j] == 'P'
+					|| m[i - 1][j] == 'P'))
+						m[i][j] = 'P';
+				j++;
+			}
+			i++;
 		}
-		// printf("%d == %d", x,y);
-		ft_check_ply_path(str);
 	}
-	else if (str[x - 1][y] == '0')
-	{
-		str[x][y] = 'Z';
-		str[x - 1][y] = 'P';
-		g = 0;
-		while (str[g] != NULL)
-		{
-			// printf("%s\n", str[g]);
-			g++;
-		}
-		// printf("%d == %d", x,y);
-		ft_check_ply_path(str);
-	}
-	else if (str[x + 1][y] == '0')
-	{
-		str[x][y] = 'Z';
-		str[x + 1][y] = 'P';
-		g = 0;
-		while (str[g] != NULL)
-		{
-			// printf("%s\n", str[g]);
-			g++;
-		}
-		// printf("%d == %d", x,y);
-		ft_check_ply_path(str);
-	}
-	return (1); 
+	ft_final_check(m);
 }

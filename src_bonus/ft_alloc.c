@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_alloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 19:47:06 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/29 14:39:00 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/01/28 16:29:34 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/01/29 10:18:35 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long_bonus.h"
+#include "../Libft/libft.h"
 
-char	*ft_strdup(const char *str)
+char	**ft_alloc(char **str)
 {
-	char	*alloc;
-	size_t	i;
-	size_t	str_len;
+	int		i;
+	int		len_h;
+	char	**map;
 
-	str_len = ft_strlen(str);
 	i = 0;
-	alloc = (char *)malloc((str_len + 1) * sizeof(char));
-	if (!alloc)
-		return (0);
-	return (ft_memcpy(alloc, str, str_len + 1));
+	len_h = 0;
+	while (str[len_h])
+		len_h++;
+	map = malloc(sizeof(char *) * len_h + 1);
+	while (str[i])
+	{
+		map[i] = ft_strdup(str[i]);
+		i++;
+	}
+	map[i] = NULL;
+	return (map);
 }

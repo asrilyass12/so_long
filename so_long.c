@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:05:40 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/27 12:39:05 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:22:28 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	**ft_error(char *av, t_pars *pars)
 	ft_check_characters(map, pars);
 	ft_check_extra(map);
 	ft_cnt_char(map, pars);
+	ft_fill(map);
 	return (map);
 }
 
@@ -77,7 +78,7 @@ int	main(int ac, char **av)
 	t_win.win = mlx_new_window(t_win.ptr, ft_strlen(t_win.map[0])
 			* 64, ft_cnt_h(t_win.map) * 64 + 32, "so_long");
 	ft_draw(&t_win, t_win.root);
-	mlx_key_hook(t_win.win, ft_key_check, &t_win);
+	mlx_hook(t_win.win, 2, 0, ft_key_check, &t_win);
 	mlx_hook(t_win.win, 17, 0, &mouse_hook, &t_win);
 	mlx_loop(t_win.ptr);
 	return (0);

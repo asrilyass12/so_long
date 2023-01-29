@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_pos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 19:47:06 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/29 14:39:00 by ilasrarf         ###   ########.fr       */
+/*   Created: 2023/01/28 12:09:28 by ilasrarf          #+#    #+#             */
+/*   Updated: 2023/01/29 14:06:37 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
+#include "../Libft/libft.h"
 
-char	*ft_strdup(const char *str)
+int	ft_pos(char **str, int *y, int *x)
 {
-	char	*alloc;
-	size_t	i;
-	size_t	str_len;
+	int	i;
+	int	j;
 
-	str_len = ft_strlen(str);
 	i = 0;
-	alloc = (char *)malloc((str_len + 1) * sizeof(char));
-	if (!alloc)
-		return (0);
-	return (ft_memcpy(alloc, str, str_len + 1));
+	j = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == 'P')
+			{
+				*y = i;
+				*x = j;
+				return (1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

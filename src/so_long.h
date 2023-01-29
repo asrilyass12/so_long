@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 00:52:58 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/27 13:41:08 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 14:06:46 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,12 @@ int		ft_cnt_char_err(t_pars *pars);
 void	ft_err_read(char *str);
 int		ft_check_extra(char **str);
 int		ft_pos(char **str, int *y, int *x);//get plyaer position
-int		ft_check_ply_path(char **str);//check if player have a valid path
 int		ft_cnt_h(char **map); // count lines in the map
 void	ft_free(char **str);
+char	**ft_alloc(char **str);
+void	ft_fill(char **str);
+void	ft_final_check(char **map);
+int		ft_check_zero(char **map);
 
 //------------- pasrsing part end -------------//
 
@@ -117,5 +120,11 @@ int		ft_destroy(t_mlx *t_win); // destroy images and window
 
 //---------------- BONUS PART -----------------//
 int		ft_animation(t_mlx *t_win);
+
+void	ft_up(t_mlx *t_win);
+void	ft_right(t_mlx *t_win);
+void	ft_down(t_mlx *t_win);
+void	ft_left(t_mlx *t_win);
+void	ft_mess(t_mlx *t_win, char *str);
 //------------- drawing part  end -------------//
 #endif

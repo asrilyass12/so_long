@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 00:52:58 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/28 10:17:33 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:04:56 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@ int		ft_check_ply_path(char **str);//check if player have a valid path
 int		ft_cnt_h(char **map); // count lines in the map
 void	ft_free(char **str);
 
+int		ft_check_zero(char **map);
+void	ft_fill(char **str);
+char	**ft_alloc(char **str);
+void	ft_final_check(char **map);
 //------------- pasrsing part end -------------//
 
 //------------- drawing part -------------//
@@ -122,7 +126,6 @@ int		ft_move_up(t_mlx *t_win, void *img);
 int		ft_write_moves(t_mlx *t_win);//wirte the number of moves in command line
 
 int		ft_destroy(t_mlx *t_win); // destroy images and window
-int		ft_destroy_frame(t_mlx *t_win);
 
 void	ft_move_enemy(t_mlx *t_win);//for enemy move
 void	ft_find_p(t_mlx *t_win);//find ply if enemy eated 
@@ -130,10 +133,12 @@ void	ft_cnt_enemy(t_mlx *t_win);// count enemy
 int		*ft_get_all_pos(t_mlx *t_win);//get all positions for enemy
 int		ft_animation(t_mlx *t_win);//animation
 
-void	t_up(t_mlx *t_win);
+void	ft_up(t_mlx *t_win);
 void	ft_down(t_mlx *t_win);
 void	ft_left(t_mlx *t_win);
 void	ft_right(t_mlx *t_win);
+
+void	ft_free_nor(char **str);
 
 //------------- drawing part  end -------------//
 #endif

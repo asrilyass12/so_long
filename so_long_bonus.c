@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:05:40 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/27 11:56:14 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 14:19:38 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_draw(t_mlx *t_win, void *img, char root)
 {
 	char	*str;
 	int		h;
-	
+
 	mlx_clear_window(t_win->ptr, t_win->win);
 	h = ft_cnt_h(t_win->map);
 	ft_draw_w_f(t_win, img);
@@ -32,7 +32,7 @@ int	ft_draw(t_mlx *t_win, void *img, char root)
 	if (t_win->coin_cnt != t_win->coin_eat)
 	{
 		mlx_string_put(t_win->ptr, t_win->win, 5, 5, 0xFFFFFF, "hey boy \
-			your mission is to collect all coins to be rich and be careful xD ");
+			your mission is to collect all coins to be rich and be careful");
 	}
 	else if (t_win->coin_cnt == t_win->coin_eat)
 	{
@@ -63,6 +63,7 @@ char	**ft_error(char *av, t_pars *pars)
 	ft_check_characters(map, pars);
 	ft_check_extra(map);
 	ft_cnt_char(map, pars);
+	ft_fill(map);
 	return (map);
 }
 
@@ -88,10 +89,7 @@ int	main(int ac, char **av)
 	ft_cnt_coin(&t_win);
 	t_win.ptr = mlx_init();
 	if (!t_win.ptr)
-	{
-		ft_free(t_win.map);
-		exit(0);
-	}
+		ft_free_nor(t_win.map);
 	t_win.win = mlx_new_window(t_win.ptr, ft_strlen(t_win.map[0])
 			* 64, ft_cnt_h(t_win.map) * 64 + 64, "so_long");
 	ft_put_img(&t_win);
