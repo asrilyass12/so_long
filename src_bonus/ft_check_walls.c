@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:18:41 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/27 14:26:55 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:29:19 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	ft_no_escape_map(char **str)
 		if (i == 0 || i == h - 1)
 		{
 			j = 0;
-			while (str[i][++j])
-				ft_chack_wall_p1(str[i][j]);
+			while (str[i][j])
+				ft_chack_wall_p1(str[i][j++]);
 		}
 		else
 			ft_chack_wall_p2(str[i][0], str[i][len]);

@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:19:04 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/27 12:27:42 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:47:26 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	ft_err_read(char *str)
 	int	i;
 
 	i = 0;
+	if (str[0] == '\0')
+	{
+		write(1, "!!ERROR!!\nMAP IS EMPTY", 22);
+		exit(1);
+	}
 	while (str[i])
 	{
 		if (str[i] == '\n')
