@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:10:46 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/29 18:16:10 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/30 08:40:01 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,22 @@ void	ft_move_enemy(t_mlx *t_win)
 {
 	int			i;
 	int			*tab;
-	static int	d = 0;
 
 	i = 0;
 	tab = ft_get_all_pos(t_win);
 	while (i + 1 < t_win->enemy_cnt * 2)
 	{
 		if ((t_win->map[tab[i]][tab[i + 1] + 1] == '0'
-			|| t_win->map[tab[i]][tab[i + 1] + 1] == 'P') && d != 1)
+			|| t_win->map[tab[i]][tab[i + 1] + 1] == 'P'))
 		{
 			t_win->map[tab[i]][tab[i + 1] + 1] = 'M';
 			t_win->map[tab[i]][tab[i + 1]] = '0';
-			d = 1;
 		}
 		else if ((t_win->map[tab[i]][tab[i + 1] - 1] == '0'
-			|| t_win->map[tab[i]][tab[i + 1] - 1] == 'P') && d != 2)
+			|| t_win->map[tab[i]][tab[i + 1] - 1] == 'P'))
 		{
 			t_win->map[tab[i]][tab[i + 1] - 1] = 'M';
 			t_win->map[tab[i]][tab[i + 1]] = '0';
-			d = 2;
 		}
 		i += 2;
 	}

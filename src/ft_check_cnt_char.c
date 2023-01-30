@@ -6,7 +6,7 @@
 /*   By: ilasrarf <ilasrarf@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:00:29 by ilasrarf          #+#    #+#             */
-/*   Updated: 2023/01/24 03:35:56 by ilasrarf         ###   ########.fr       */
+/*   Updated: 2023/01/30 08:56:45 by ilasrarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_cnt_char_err(t_pars *pars)
 {
 	if (pars->e != 1 || pars->p != 1 || pars->c < 1)
 	{
-		write(1, "!!ERROR!!\nThe map must contain the exact num of sprits ", 98);
+		write(1, "!!ERROR!!\nThe map must contain the exact num of sprits", 54);
 		exit (1);
 	}
 	return (0);
